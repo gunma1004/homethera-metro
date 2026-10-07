@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // 🌐 적용할 새 도메인 주수
-  const baseUrl = 'https://gunmasarang-massage4.vercel.app';
+  // 🌐 홈테라 배포 도메인 주소
+  const baseUrl = 'https://homethera-metro.netlify.app';
 
   // 1. 메인 대표 홈 페이지
   const mainRoute: MetadataRoute.Sitemap = [
@@ -36,9 +36,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // 4. 구·시 주요 권역 목록 (네이버 스팸 방지 및 404 방지를 위해 구/시 경로만 유일 URL로 깔끔하게 정돈)
+  // 4. 서울·경기·인천 수도권 전역 주요 권역 목록 (네이버/구글 색인 최적화)
   const regionList = [
-    // 서울 주요 권역
+    // [서울 권역]
     { region: 'seoul', district: '종로구' },
     { region: 'seoul', district: '중구' },
     { region: 'seoul', district: '용산구' },
@@ -65,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { region: 'seoul', district: '송파구' },
     { region: 'seoul', district: '강동구' },
 
-    // 경기 주요 권역
+    // [경기 권역]
     { region: 'gyeonggi', district: '수원시 장안구' },
     { region: 'gyeonggi', district: '수원시 권선구' },
     { region: 'gyeonggi', district: '수원시 팔달구' },
@@ -76,18 +76,49 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { region: 'gyeonggi', district: '고양시 덕양구' },
     { region: 'gyeonggi', district: '고양시 일산동구' },
     { region: 'gyeonggi', district: '고양시 일산서구' },
-    { region: 'gyeonggi', district: '용인시 수지구' },
+    { region: 'gyeonggi', district: '용인시 처인구' },
     { region: 'gyeonggi', district: '용인시 기흥구' },
+    { region: 'gyeonggi', district: '용인시 수지구' },
     { region: 'gyeonggi', district: '부천시 원미구' },
+    { region: 'gyeonggi', district: '부천시 소사구' },
+    { region: 'gyeonggi', district: '부천시 오정구' },
+    { region: 'gyeonggi', district: '안산시 상록구' },
+    { region: 'gyeonggi', district: '안산시 단원구' },
+    { region: 'gyeonggi', district: '안양시 만안구' },
+    { region: 'gyeonggi', district: '안양시 동안구' },
+    { region: 'gyeonggi', district: '남양주시' },
+    { region: 'gyeonggi', district: '화성시' },
+    { region: 'gyeonggi', district: '평택시' },
+    { region: 'gyeonggi', district: '의정부시' },
+    { region: 'gyeonggi', district: '파주시' },
+    { region: 'gyeonggi', district: '김포시' },
+    { region: 'gyeonggi', district: '시흥시' },
+    { region: 'gyeonggi', district: '광명시' },
+    { region: 'gyeonggi', district: '광주시' },
+    { region: 'gyeonggi', district: '하남시' },
+    { region: 'gyeonggi', district: '군포시' },
+    { region: 'gyeonggi', district: '오산시' },
+    { region: 'gyeonggi', district: '이천시' },
+    { region: 'gyeonggi', district: '안성시' },
+    { region: 'gyeonggi', district: '양주시' },
+    { region: 'gyeonggi', district: '포천시' },
+    { region: 'gyeonggi', district: '여주시' },
+    { region: 'gyeonggi', district: '동두천시' },
+    { region: 'gyeonggi', district: '가평군' },
+    { region: 'gyeonggi', district: '양평군' },
+    { region: 'gyeonggi', district: '연천군' },
 
-    // 인천 주요 권역
+    // [인천 권역]
     { region: 'incheon', district: '중구' },
+    { region: 'incheon', district: '동구' },
     { region: 'incheon', district: '미추홀구' },
     { region: 'incheon', district: '연수구' },
     { region: 'incheon', district: '남동구' },
     { region: 'incheon', district: '부평구' },
     { region: 'incheon', district: '계양구' },
     { region: 'incheon', district: '서구' },
+    { region: 'incheon', district: '강화군' },
+    { region: 'incheon', district: '옹진군' },
   ];
 
   const regionRoutes: MetadataRoute.Sitemap = regionList.map((item) => {

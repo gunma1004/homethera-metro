@@ -3,19 +3,43 @@ import "./globals.css";
 import NavigationHeader from "./NavigationHeader";
 
 export const metadata: Metadata = {
-  title: '건마사랑 | 서울·경기·인천 24시 방문 홈케어 & 힐링 테라피 안내',
-  description: '서울·경기·인천 25분 내 빠른 방문! 선입금 없는 100% 안심 후불제. 타이, 아로마, 스웨디시 힐링 테라피 정보 안내.',
+  // 사이트명이 뒤로 들어가는 타이틀 구조
+  title: "서울·경기·인천 출장 케어 프라이빗 마사지 | 홈테라",
+  description:
+    "서울·경기·인천에서 홈테라 출장마사지를 살펴보세요. 프라이빗·스웨디시 타이 아로마 등 다양한 구성과 60·90·120분 코스의 시간·금액을 한눈에 확인할 수 있습니다.",
+  keywords: [
+    "홈테라",
+    "서울 출장마사지",
+    "경기 출장마사지",
+    "인천 출장마사지",
+    "수도권 출장케어",
+    "프라이빗 마사지",
+    "스웨디시",
+    "타이마사지",
+    "아로마 마사지",
+  ],
+  metadataBase: new URL("https://homethera-metro.netlify.app"),
+  alternates: {
+    canonical: "https://homethera-metro.netlify.app/",
+  },
   openGraph: {
-    title: '건마사랑 | 서울·경기·인천 24시 방문 홈케어 추천',
-    description: '선입금 없는 100% 후불 안심 케어! 수도권 전지역 25분 내 빠른 방문 바디케어 정보를 확인하세요.',
-    url: 'https://gunmasarang.vercel.app',
-    siteName: '건마사랑',
-    locale: 'ko_KR',
-    type: 'website',
+    title: "서울·경기·인천 출장 케어 프라이빗 마사지 | 홈테라",
+    description:
+      "서울·경기·인천에서 홈테라 출장마사지를 살펴보세요. 프라이빗·스웨디시 타이 아로마 등 다양한 구성과 60·90·120분 코스의 시간·금액을 한눈에 확인할 수 있습니다.",
+    url: "https://homethera-metro.netlify.app/",
+    siteName: "홈테라",
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "서울·경기·인천 출장 케어 프라이빗 마사지 | 홈테라",
+    description:
+      "서울·경기·인천에서 홈테라 출장마사지를 살펴보세요. 프라이빗·스웨디시 타이 아로마 등 다양한 구성과 60·90·120분 코스의 시간·금액을 한눈에 확인할 수 있습니다.",
   },
   verification: {
     other: {
-      'naver-site-verification': 'e08c15021056a969d7c5e807a12a0f3795a4778c',
+      "naver-site-verification": "c8625ebceda7c89718662fa3b673bda86801f453",
     },
   },
 };

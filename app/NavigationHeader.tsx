@@ -14,15 +14,15 @@ export default function NavigationHeader() {
         <Link href="/" className="flex items-center gap-2.5 group">
           <img 
             src="/logo.png" 
-            alt="건마사랑 로고" 
+            alt="홈테라 로고" 
             className="w-9 h-9 rounded-xl object-cover border border-amber-500/40 group-hover:scale-105 transition-transform" 
           />
           <span className="text-lg font-black tracking-wider bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
-            건마사랑
+            홈테라
           </span>
         </Link>
 
-        {/* 🌟 요청하신 카테고리 메뉴 목록 */}
+        {/* 카테고리 네비게이션 메뉴 */}
         <nav className="hidden md:flex items-center gap-6 text-xs font-bold text-gray-300">
           
           {/* 1. 서비스 */}
@@ -35,7 +35,7 @@ export default function NavigationHeader() {
             가격안내
           </Link>
 
-          {/* 3. (지역)여행 */}
+          {/* 3. 지역여행 */}
           <Link href="/travel" className="hover:text-amber-400 transition-colors flex items-center gap-1">
             지역여행
           </Link>
@@ -45,14 +45,14 @@ export default function NavigationHeader() {
             맛집·숙소
           </Link>
 
-          {/* 5. 지역안내 (드롭다운) */}
+          {/* 5. 수도권 지역안내 (드롭다운) */}
           <div 
             className="relative cursor-pointer py-2"
             onMouseEnter={() => setIsRegionOpen(true)}
             onMouseLeave={() => setIsRegionOpen(false)}
           >
             <button className="hover:text-amber-400 transition-colors flex items-center gap-1 text-xs font-bold text-gray-300">
-              지역안내
+              수도권 지역
               <span className="text-[10px] text-amber-400">▼</span>
             </button>
 
@@ -78,9 +78,9 @@ export default function NavigationHeader() {
 
         </nav>
 
-        {/* 우측 전화 CTA */}
+        {/* 우측 전화 CTA (제휴 대표 번호 연결) */}
         <a 
-          href="tel:0507-1280-3344"
+          href="tel:0507-1280-3360"
           className="bg-gradient-to-r from-amber-500 to-yellow-400 text-black font-extrabold text-xs px-3.5 py-2 rounded-xl shadow transition-all active:scale-95"
         >
           📞 빠른 문의

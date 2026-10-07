@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-// 서울·경기·인천 전지역 데이터
+// 서울·경기·인천 수도권 전지역 행정구역 데이터
 const regionData: Record<string, { name: string; districts: Record<string, { name: string; dongs: string[] }> }> = {
   seoul: {
     name: "서울특별시",
@@ -32,7 +32,7 @@ const regionData: Record<string, { name: string; districts: Record<string, { nam
       seocho: { name: "서초구", dongs: ["서초1동", "서초2동", "서초3동", "서초4동", "잠원동", "반포본동", "반포1동", "반포2동", "반포3동", "반포4동", "방배본동", "방배1동", "방배2동", "방배3동", "방배4동", "양재1동", "양재2동", "내곡동"] },
       gangnam: { name: "강남구", dongs: ["역삼1동", "역삼2동", "개포1동", "개포2동", "개포4동", "청담동", "삼성1동", "삼성2동", "대치1동", "대치2동", "대치4동", "신사동", "논현1동", "논현2동", "압구정동", "세곡동", "자곡동", "일원동", "수서동", "도곡1동", "도곡2동"] },
       songpa: { name: "송파구", dongs: ["잠실본동", "잠실2동", "잠실3동", "잠실4동", "잠실6동", "잠실7동", "풍납1동", "풍납2동", "거여1동", "거여2동", "마천1동", "마천2동", "방이1동", "방이2동", "오륜동", "오금동", "송파1동", "송파2동", "석촌동", "삼전동", "가락본동", "가락1동", "가락2동", "문정1동", "문정2동", "장지동", "위례동", "잠실동"] },
-      gangdong: { name: "강동구", dongs: ["강일동", "상일1동", "상일2동", "명일1동", "명일2동", "고덕1동", "고덕2동", "암사1동", "암사2동", "암사3동", "천호1동", "천호2동", "천호3동", "성내1동", "성내2동", "성내3동", "둔촌1동", "둔촌2동"] },
+      gangdong: { name: "강동구", dongs: ["강일동", "상일1동", "상일2동", "명일1동", "명일2동", "고덕1동", "고덕2동", "암사1동", "암사2동", "암사3동", "천호1동", "천호2동", "천호3동", "성내1동", "성내2동", "성내3동", "둔촌1동", "둔촌2동"] }
     }
   },
   gyeonggi: {
@@ -98,45 +98,46 @@ const regionData: Record<string, { name: string; districts: Record<string, { nam
   }
 };
 
+// 요청하신 홈테라 5개 제휴업체 정보 및 표준 요금표 반영
 const initialLocalShops = [
   {
     id: 1,
-    name: "🔥 한국미녀홈타이",
-    desc: "서울·경기·인천 전지역 신속 방문! 정성 가득한 테라피 & 릴렉싱 프로그램",
-    phone: "0507-1280-3299",
-    price: "90,000원부터~",
+    name: "오늘밤 테라피 케어",
+    desc: "서울·경기·인천 전지역 신속 출장 방문! 정성 가득한 프리미엄 힐링 & 릴렉싱 케어",
+    phone: "0507-1280-3199",
+    price: "타이 60,000원부터~",
     image: "/shop1.jpg"
   },
   {
     id: 2,
-    name: "✨ 너무이쁜홈타이",
-    desc: "품격 있는 힐링을 선사하는 최고급 오일 프라이빗 방문 테라피 서비스",
-    phone: "0507-1280-3190",
-    price: "60,000원부터~",
+    name: "퀸즈홈테라피 케어",
+    desc: "품격 있는 쉼을 선사하는 최고급 천연 아로마 오일 프라이빗 맞춤 홈케어",
+    phone: "0507-1280-3296",
+    price: "아로마 70,000원부터~",
     image: "/shop2.jpg"
   },
   {
     id: 3,
-    name: "💎 예쁜걸홈타이",
-    desc: "재방문율 1위! 칼도착 25분 보장, 철저한 위생 관리와 럭셔리 케어",
-    phone: "0507-1280-3185",
-    price: "60,000원부터~",
+    name: "한국미인테라피",
+    desc: "재방문율 1위 베테랑 힐러! 안심 후불제 보장과 철저한 위생 관리의 럭셔리 케어",
+    phone: "0507-1280-3140",
+    price: "힐링 100,000원부터~",
     image: "/shop3.jpg"
   },
   {
     id: 4,
-    name: "🌟 20대프리미엄홈케어",
-    desc: "전문 힐러들의 맞춤형 VIP 피로회복 특화 프로그램 진행 중",
-    phone: "0507-1280-3222",
-    price: "60,000원부터~",
+    name: "주주테라피",
+    desc: "스웨디시 감성 케어 전문! 뭉친 피로를 부드럽게 녹여주는 고품격 테라피 프로그램",
+    phone: "0507-1280-3197",
+    price: "스웨디시 140,000원부터~",
     image: "/shop4.jpg"
   },
   {
     id: 5,
-    name: "👑 한국골든테라피",
-    desc: "선입금 없는 100% 후불제! 수도권 전지역 평균 25분 내 실시간 도착",
+    name: "한국골든테라피",
+    desc: "선입금 없는 100% 현장 후불제! 수도권 전지역 평균 25분 내 실시간 도착 보장",
     phone: "0507-1280-3360",
-    price: "110,000원부터~",
+    price: "스페셜 110,000원부터~",
     image: "/shop5.jpg"
   }
 ];
@@ -156,7 +157,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
       </button>
       {isOpen && (
         <div className="px-4 pb-4 text-xs text-gray-300 leading-relaxed border-t border-white/5 pt-3 bg-black/40">
-          <span className="text-red-400 font-bold">A. </span>{answer}
+          <span className="text-amber-400 font-bold">A. </span>{answer}
         </div>
       )}
     </div>
@@ -172,7 +173,7 @@ export default function MainClientUI() {
   const [shuffledShops, setShuffledShops] = useState(initialLocalShops);
 
   useEffect(() => {
-    // 페이지 진입/새로고침 시 샵 배열을 무작위로 섞음 (Fisher-Yates Shuffle 알고리즘)
+    // Fisher-Yates Shuffle 알고리즘 적용
     const shuffled = [...initialLocalShops].sort(() => Math.random() - 0.5);
     setShuffledShops(shuffled);
   }, []);
@@ -216,12 +217,12 @@ export default function MainClientUI() {
           <Link href="/" className="flex items-center gap-3 group">
             <img 
               src="/logo.png" 
-              alt="건마사랑 로고" 
+              alt="홈테라 로고" 
               className="w-10 h-10 rounded-xl object-cover border border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.4)] group-hover:scale-105 transition-transform" 
             />
             <div className="flex flex-col">
               <span className="text-xl font-black tracking-wider bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
-                건마사랑
+                홈테라
               </span>
               <span className="text-[10px] text-gray-400 tracking-tighter">SEOUL · GYEONGGI · INCHEON</span>
             </div>
@@ -233,7 +234,7 @@ export default function MainClientUI() {
               <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
             </span>
             <span className="text-xs px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/20 to-red-500/20 text-amber-300 border border-amber-500/30 font-bold shadow-inner">
-              🔥 24시 실시간 영업중
+              🔥 24시 실시간 예약 가능
             </span>
           </div>
         </div>
@@ -258,21 +259,21 @@ export default function MainClientUI() {
                 ✨ 100% 후불제 안심 보장 시스템
               </span>
               <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight drop-shadow-lg">
-                서울·경기·인천 <span className="bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent">25분 내 신속 방문 케어</span>
+                서울·경기·인천 <span className="bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent">출장 케어 프라이빗 마사지</span>
               </h1>
               <p className="text-gray-200 text-xs md:text-sm font-medium max-w-lg mx-auto drop-shadow">
-                엄선된 최고급 베테랑 관리사의 프라이빗 피로회복 프로그램! 지금 바로 내 주변 제휴업체를 만나보세요.
+                서울·경기·인천에서 홈테라 출장마사지를 살펴보세요. 프라이빗·스웨디시 타이 아로마 등 다양한 구성과 60·90·120분 코스의 시간·금액을 한눈에 확인할 수 있습니다.
               </p>
             </div>
           </div>
         </section>
 
-        {/* 메인 추천 제휴업체 5개 박스 카드리스트 (새로고침 시 랜덤 섞임) */}
+        {/* 제휴업체 5개 박스 카드리스트 (새로고침 시 랜덤 섞임) */}
         <section className="space-y-6">
           <div className="text-center mb-6">
             <p className="text-xs text-amber-400 font-bold tracking-widest uppercase">BEST RECOMMENDED SHOPS</p>
             <h2 className="text-xl md:text-2xl font-black text-white mt-1">
-              🏆 건마사랑 최고의 추천 제휴업체 (5곳)
+              🏆 홈테라 추천 제휴업체 (5곳)
             </h2>
           </div>
 
@@ -309,6 +310,61 @@ export default function MainClientUI() {
           </div>
         </section>
 
+        {/* 코스 및 표준 요금표 안내 테이블 */}
+        <section className="bg-[#0f0f12] border border-amber-500/30 p-6 rounded-3xl space-y-4">
+          <div className="text-center">
+            <span className="text-xs text-amber-400 font-bold tracking-widest uppercase">COURSE & PRICE</span>
+            <h3 className="text-xl font-black text-white mt-1">홈테라 표준 기준 요금표</h3>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-center text-xs md:text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-white/10 text-gray-400">
+                  <th className="py-3 px-2">관리 코스</th>
+                  <th className="py-3 px-2">60분</th>
+                  <th className="py-3 px-2">90분</th>
+                  <th className="py-3 px-2">120분</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-gray-200">
+                <tr>
+                  <td className="py-3 font-bold text-white">타이마사지</td>
+                  <td className="py-3 text-amber-400 font-semibold">60,000원</td>
+                  <td className="py-3 text-amber-400 font-semibold">80,000원</td>
+                  <td className="py-3 text-amber-400 font-semibold">100,000원</td>
+                </tr>
+                <tr>
+                  <td className="py-3 font-bold text-white">아로마마사지</td>
+                  <td className="py-3 text-amber-400 font-semibold">70,000원</td>
+                  <td className="py-3 text-amber-400 font-semibold">90,000원</td>
+                  <td className="py-3 text-amber-400 font-semibold">110,000원</td>
+                </tr>
+                <tr>
+                  <td className="py-3 font-bold text-white">힐링마사지</td>
+                  <td className="py-3 text-amber-400 font-semibold">100,000원</td>
+                  <td className="py-3 text-amber-400 font-semibold">110,000원</td>
+                  <td className="py-3 text-amber-400 font-semibold">130,000원</td>
+                </tr>
+                <tr>
+                  <td className="py-3 font-bold text-white">스페셜마사지</td>
+                  <td className="py-3 text-amber-400 font-semibold">110,000원</td>
+                  <td className="py-3 text-amber-400 font-semibold">120,000원</td>
+                  <td className="py-3 text-amber-400 font-semibold">140,000원</td>
+                </tr>
+                <tr>
+                  <td className="py-3 font-bold text-white">스웨디시</td>
+                  <td className="py-3 text-amber-400 font-semibold">140,000원</td>
+                  <td className="py-3 text-amber-400 font-semibold">160,000원</td>
+                  <td className="py-3 text-gray-600">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[11px] text-gray-500 text-center mt-2">
+            ※ 출장 이동 거리 및 심야 시간대에 따라 일부 차이가 발생할 수 있으므로 예약 상담 시 최종 확인해 주세요.
+          </p>
+        </section>
+
         {/* 지역 선택 박스 */}
         <section className="pt-6 border-t border-white/10">
           <div className="bg-gradient-to-b from-[#18181b] to-[#0f0f11] border-2 border-amber-500/40 p-6 rounded-3xl max-w-xl mx-auto shadow-[0_10px_30px_rgba(0,0,0,0.8)] text-left relative overflow-hidden">
@@ -317,7 +373,7 @@ export default function MainClientUI() {
                 📍 내 동네 검색 및 이동하기
               </label>
               <span className="text-[11px] text-gray-400 bg-black/40 px-2.5 py-1 rounded-lg border border-white/5">
-                지역 전용 화면 이동
+                수도권 지역 전용 이동
               </span>
             </div>
 
@@ -374,7 +430,7 @@ export default function MainClientUI() {
                 onClick={handleSearch}
                 className="w-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-black py-4 rounded-2xl text-sm transition-all shadow-[0_0_25px_rgba(245,158,11,0.4)] mt-3 cursor-pointer transform active:scale-[0.98]"
               >
-                🚀 해당 지역 화면으로 이동하기
+                🚀 해당 지역 제휴업체 보기
               </button>
             </div>
           </div>
@@ -384,28 +440,28 @@ export default function MainClientUI() {
         <section className="bg-[#0d0d0f] border border-amber-500/30 p-6 md:p-8 rounded-3xl space-y-6">
           <div className="text-center">
             <span className="text-amber-400 text-xs font-bold tracking-widest">HOW TO USE</span>
-            <h3 className="text-xl font-black text-white mt-1">건마사랑 이용 방법</h3>
+            <h3 className="text-xl font-black text-white mt-1">홈테라 이용 방법</h3>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 1</span>
-              <h4 className="font-bold text-white mt-1">문의 준비</h4>
-              <p className="text-xs text-gray-400 mt-1">희망하시는 지역명을 알려줍니다.</p>
+              <h4 className="font-bold text-white mt-1">위치 확인</h4>
+              <p className="text-xs text-gray-400 mt-1">출장 받으실 주소 및 건물명을 확인합니다.</p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 2</span>
-              <h4 className="font-bold text-white mt-1">가능 여부</h4>
-              <p className="text-xs text-gray-400 mt-1">원하시는 시간대를 확인합니다.</p>
+              <h4 className="font-bold text-white mt-1">시간 조율</h4>
+              <p className="text-xs text-gray-400 mt-1">원하시는 방문 희망 시간대를 문의합니다.</p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 3</span>
-              <h4 className="font-bold text-white mt-1">코스 확인</h4>
-              <p className="text-xs text-gray-400 mt-1">이용 조건과 코스를 선택합니다.</p>
+              <h4 className="font-bold text-white mt-1">코스 선택</h4>
+              <p className="text-xs text-gray-400 mt-1">타이·아로마·스웨디시 코스를 결정합니다.</p>
             </div>
             <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
               <span className="text-xs text-amber-400 font-bold">STEP 4</span>
-              <h4 className="font-bold text-white mt-1">방문 완료</h4>
-              <p className="text-xs text-gray-400 mt-1">도착 후 후불제로 케어를 받습니다.</p>
+              <h4 className="font-bold text-white mt-1">안심 케어</h4>
+              <p className="text-xs text-gray-400 mt-1">관리사 도착 후 현장 후불 결제로 진행됩니다.</p>
             </div>
           </div>
         </section>
@@ -420,19 +476,19 @@ export default function MainClientUI() {
             <div className="bg-[#0f0f12] p-5 rounded-2xl border border-white/5 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-amber-400 font-black text-sm">★★★★★ 5.0</span>
-                <span className="text-[11px] text-gray-500">서울 직장인</span>
+                <span className="text-[11px] text-gray-500">서울 강남구 이용자</span>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
-                &quot;시간 약속 칼같이 맞춰오시고 친절하셨어요. 뭉친 어깨가 싹 풀려서 주말마다 자주 찾게 되네요!&quot;
+                &quot;시간 약속 칼같이 맞춰오시고 너무 친절하셨어요. 뭉친 어깨와 허리가 시원하게 풀려서 정기적으로 이용 중입니다!&quot;
               </p>
             </div>
             <div className="bg-[#0f0f12] p-5 rounded-2xl border border-white/5 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-amber-400 font-black text-sm">★★★★★ 5.0</span>
-                <span className="text-[11px] text-gray-500">경기 이용자</span>
+                <span className="text-[11px] text-gray-500">경기 분당구 이용자</span>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
-                &quot;선입금 없는 후불제라 정말 부담없이 이용할 수 있어서 만족합니다. 매니저분 마인드도 훌륭했어요.&quot;
+                &quot;예약금이나 선입금 없는 100% 후불제라 안심하고 부를 수 있어서 좋네요. 테라피스트 실력도 확실합니다.&quot;
               </p>
             </div>
           </div>
@@ -446,12 +502,12 @@ export default function MainClientUI() {
           </div>
           <div className="space-y-3">
             <FaqItem 
-              question="방문까지 보통 시간이 얼마나 소요되나요?"
-              answer="서울, 경기, 인천 주요 지역 기준 평균 20분~30분 내외로 신속하게 방문 서비스가 가능합니다."
+              question="방문까지 소요 시간은 얼마나 걸리나요?"
+              answer="서울, 경기, 인천 주요 수도권 생활권 기준 평균 20분~30분 내외로 신속하게 방문 관리가 가능합니다."
             />
             <FaqItem 
-              question="선입금이나 예약금이 발생하나요?"
-              answer="건마사랑 제휴업체는 100% 후불제로 운영되므로 도착 전 선입금을 절대 요구하지 않습니다."
+              question="선입금이나 예약금이 있나요?"
+              answer="홈테라에 등록된 제휴업체는 100% 안심 후불제로 운영되어 도착 전 선입금을 절대 요구하지 않습니다."
             />
           </div>
         </section>
@@ -464,15 +520,15 @@ export default function MainClientUI() {
           
           <div>
             <a 
-              href="tel:0507-1280-3344" 
+              href="tel:0507-1280-3360" 
               className="inline-flex items-center gap-1.5 bg-neutral-900 hover:bg-neutral-800 text-amber-400 font-bold px-4 py-2 rounded-xl border border-amber-500/30 hover:border-amber-400 transition-all text-xs shadow-md"
             >
-              <span>🤝</span> 제휴문의 (0507-1280-3344)
+              <span>🤝</span> 제휴 및 예약 문의 (0507-1280-3360)
             </a>
           </div>
 
-          <p className="text-gray-400 font-bold">건마사랑은 건전하고 안전한 제휴 마사지 정보 플랫폼입니다.</p>
-          <p className="text-[11px] text-gray-600">COPYRIGHT &copy; 건마사랑 ALL RIGHTS RESERVED.</p>
+          <p className="text-gray-400 font-bold">홈테라는 건전하고 안전한 수도권 방문 홈케어 정보 플랫폼입니다.</p>
+          <p className="text-[11px] text-gray-600">COPYRIGHT &copy; 2026 홈테라 ALL RIGHTS RESERVED.</p>
         </div>
       </footer>
     </div>
