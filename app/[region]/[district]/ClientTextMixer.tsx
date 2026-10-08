@@ -2,25 +2,32 @@
 
 import { useEffect, useState } from "react";
 
-// 지역명과 자연스럽게 결합될 홈테라 타깃 롱테일 문구 리스트
+// 지역명과 자연스럽게 결합될 홈테라 타깃 롱테일 문구 리스트 (오타 수정 및 보강)
 const MIXED_TEMPLATES = [
-  "{loc} 프라이빗 출장  & 홈케어 머서자 안내 | 홈테라",
+  "{loc} 프라이빗 출장 & 홈케어 마사지 안내 | 홈테라",
   "{loc} 타이 · 아로마 · 스웨디시 25분 빠른 출장 힐링",
   "{loc} 선입금 없는 100% 안심 후불제 방문 테라피",
   "{loc} 호텔 · 자택 맞춤 1:1 프라이빗 피로회복 케어",
   "{loc} 심야 24시 실시간 예약 가능 홈케어 서비스",
+  "{loc} 프리미엄 전신 릴렉싱 & 안심 방문 케어 가이드",
+  "{loc} 뭉친 근육과 일상 피로를 푸는 맞춤 테라피 솔루션",
+  "{loc} 검증된 베테랑 힐러의 정성 어린 1:1 방문 힐링",
 ];
 
 export default function ClientTextMixer({ locationText }: { locationText: string }) {
-  // 초기 렌더링(SSR/하이드레이션) 기본값
   const cleanLocation = locationText ? locationText.trim() : "수도권 전지역";
-  const [keywordText, setKeywordText] = useState(`${cleanLocation} 전문 홈케어 바디 서비스 | 홈테라`);
+
+  // 지역명 글자 합 기반 결정론적 초기 텍스트 설정 (깜빡임 최소화)
+  const getInitialText = (loc: string) => {
+    const charSum = loc.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const template = MIXED_TEMPLATES[charSum % MIXED_TEMPLATES.length];
+    return template.replace("{loc}", loc);
+  };
+
+  const [keywordText, setKeywordText] = useState(() => getInitialText(cleanLocation));
 
   useEffect(() => {
-    // 유저 진입 시 템플릿 중 하나를 무작위 선택하여 자연스럽게 조합
-    const randomTemplate = MIXED_TEMPLATES[Math.floor(Math.random() * MIXED_TEMPLATES.length)];
-    const mixed = randomTemplate.replace("{loc}", cleanLocation);
-    setKeywordText(mixed);
+    setKeywordText(getInitialText(cleanLocation));
   }, [cleanLocation]);
 
   return (

@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavigationHeader from "./NavigationHeader";
 
+const siteUrl = "https://homethera-metro.netlify.app";
+
 export const metadata: Metadata = {
-  // 사이트명이 뒤로 들어가는 타이틀 구조
-  title: "서울·경기·인천 출장 케어 프라이빗 마사지 | 홈테라",
+  metadataBase: new URL(siteUrl),
+
+  // 🎯 타이틀 템플릿 구조 (하위 페이지와 조화롭게 연결)
+  title: {
+    default: "서울·경기·인천 출장 케어 프라이빗 마사지 | 홈테라",
+    template: "%s | 홈테라",
+  },
   description:
     "서울·경기·인천에서 홈테라 출장마사지를 살펴보세요. 프라이빗·스웨디시 타이 아로마 등 다양한 구성과 60·90·120분 코스의 시간·금액을 한눈에 확인할 수 있습니다.",
   keywords: [
@@ -18,24 +25,44 @@ export const metadata: Metadata = {
     "타이마사지",
     "아로마 마사지",
   ],
-  metadataBase: new URL("https://homethera-metro.netlify.app"),
   alternates: {
-    canonical: "https://homethera-metro.netlify.app/",
+    canonical: siteUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
   openGraph: {
     title: "서울·경기·인천 출장 케어 프라이빗 마사지 | 홈테라",
     description:
       "서울·경기·인천에서 홈테라 출장마사지를 살펴보세요. 프라이빗·스웨디시 타이 아로마 등 다양한 구성과 60·90·120분 코스의 시간·금액을 한눈에 확인할 수 있습니다.",
-    url: "https://homethera-metro.netlify.app/",
+    url: siteUrl,
     siteName: "홈테라",
     locale: "ko_KR",
     type: "website",
+    images: [
+      {
+        url: "/banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "홈테라 수도권 프라이빗 힐링 바디케어",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "서울·경기·인천 출장 케어 프라이빗 마사지 | 홈테라",
     description:
       "서울·경기·인천에서 홈테라 출장마사지를 살펴보세요. 프라이빗·스웨디시 타이 아로마 등 다양한 구성과 60·90·120분 코스의 시간·금액을 한눈에 확인할 수 있습니다.",
+    images: ["/banner.jpg"],
   },
   verification: {
     other: {
@@ -49,8 +76,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 네이버 검색엔진이 브랜드와 사이트 대표 URL을 정확히 인식하도록 돕는 JSON-LD
+  const siteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "홈테라",
+    alternateName: "홈테라 출장마사지",
+    url: siteUrl,
+  };
+
   return (
     <html lang="ko">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+        />
+      </head>
       <body>
         <NavigationHeader />
         {children}

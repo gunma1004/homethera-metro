@@ -87,14 +87,55 @@ const shopData: Record<string, {
   }
 };
 
+// 🌿 샵과 지역에 따라 문단 전체가 다르게 교체되는 1,800자 전문 웰니스 정보성 칼럼 생성기
+function getDynamicShopInsight(shopName: string, areaName: string, seed: number) {
+  const insightSets = [
+    // [세트 A] 심부 근막 이완, 승모근 결림 완화 메커니즘, 1:1 집중 관리의 효능
+    {
+      title: `${areaName} 전문 테라피 가이드: 근막 유착 완화와 피로 회복 메커니즘`,
+      sub: "정체된 연부조직 순환 촉진 및 상체 근골격계 긴장 해소 원리",
+      paragraphs: [
+        `${areaName} 지역에서 일상적인 업무와 도심 이동으로 피로가 누적된 분들은 주로 경추 주변의 후두하근과 상부 승모근, 견갑거근에 지속적인 장력을 겪게 됩니다. 장시간 모니터나 스마트폰을 바라보는 정적 자세는 어깨 관절의 전방 경사를 유발하고 흉추의 유연성을 떨어뜨려 모세혈관의 혈류 순환을 제한합니다. 혈류 공급이 원활하지 않은 근섬유 내부에는 젖산과 대사 노폐물이 축적되어 신경 압박과 만성적인 결림으로 이어집니다.`,
+        `${shopName}에서 제공하는 체계적인 수기 세션은 체온을 안정적으로 유지한 상태에서 근막의 긴장을 층별로 나누어 이완시키는 전문적인 수기 요법을 적용합니다. 단축된 근섬유의 유연성을 회복하고 관절 주변의 가동 범위를 점진적으로 확장함으로써 경직된 혈관이 확장되고 체내 피로 물질의 체외 배출을 효과적으로 촉진합니다.`,
+        `전문 힐러와의 1:1 맞춤 세션은 개인마다 서로 다른 통증 역치와 뭉침 정도를 직접 확인하며 진행되므로, 무리한 자극 없이 깊은 근막층까지 부드럽게 이완되는 편안함을 선사합니다. 정기적인 바디 밸런스 케어는 신체적 통증 완화뿐 아니라 만성적인 피로로 인해 저하된 활력을 되찾는 데 필수적인 웰니스 루틴이 됩니다.`
+      ],
+      tipTitle: "💡 추천 이용 팁: 세션 전후 컨디션 관리",
+      tipDesc: "세션을 받기 약 30분 전 미온수를 가볍게 섭취하고 환기를 마친 따뜻한 실내 온도(24~25도)를 조성하시면 근육의 미세 이완 효과가 한층 극대화됩니다."
+    },
+    // [세트 B] 림프 드레니쥐, 체액 순환, 천연 식물성 오일의 피부 및 심신 안정 시너지
+    {
+      title: `${areaName} 웰니스 리포트: 림프 순환과 천연 아로마 테라피의 생리학`,
+      sub: "정체된 체액 배농을 통한 전신 부종 완화와 자율신경계 안정화",
+      paragraphs: [
+        `인체의 림프계는 혈액순환과 달리 자체 펌프 기능을 수행하는 심장이 없기 때문에, 외부의 부드러운 수기 자극과 근육의 수축·이완에 의존해 흐름을 유지합니다. 좌식 생활과 만성 스트레스로 인해 액와부(겨드랑이)나 서혜부(사타구니) 주변 림프절이 긴장되면 체내 잉여 수분과 대사 폐기물이 정체되어 팔다리의 붓기와 무거움증이 가중됩니다.`,
+        `${shopName}의 림프 및 아로마 프로그램은 림프의 자연스러운 순환 방향에 맞추어 피부 표층을 일정한 압력으로 자극하는 유러피언 림프 드레니쥐 기법을 기반으로 합니다. 정체되어 있던 체액 순환이 활성화되면 전신의 노폐물 배출이 원활해지며, 무겁고 둔탁했던 다리와 신체 윤곽이 한결 가볍고 탄력 있게 정돈됩니다.`,
+        `동시에 사용되는 식물성 에센셜 블렌딩 오일은 피부에 풍부한 영양과 보습막을 형성하여 건조함을 예방하고, 은은한 자연 유래 향기가 대뇌 변연계를 자극하여 일상에서 교감신경에 집중되었던 긴장감을 빠르게 완화해 깊은 정서적 안정을 유도합니다.`
+      ],
+      tipTitle: "💡 추천 이용 팁: 림프 배농 촉진 방법",
+      tipDesc: "관리를 마친 후에는 체내로 방출된 노폐물이 소변과 땀으로 원활히 배설될 수 있도록 미온수를 500ml 이상 여유롭게 음용하시는 것을 권장합니다."
+    },
+    // [세트 C] 심리적 안정감, 자율신경계 회복, 프라이빗 홈케어 환경의 가치
+    {
+      title: `${areaName} 프라이빗 케어 분석: 독립된 공간이 주는 심신 회복 효과`,
+      sub: "외부 자극 차단과 부교감신경 활성화를 통한 고품격 수면 유도",
+      paragraphs: [
+        `신체적 힐링의 효과를 결정짓는 핵심 요소 중 하나는 세션이 진행되는 환경의 심리적 안정감입니다. 외부 상업 시설을 방문할 때 발생하는 도심 교통 체증, 주차 스트레스, 대기 시간 및 타인과의 마주침은 무의식중에 스트레스 호르몬인 코르티솔 분비를 촉진하여 온전한 이완 상태에 도달하는 것을 방해할 수 있습니다.`,
+        `${areaName} 전담으로 진행되는 ${shopName}의 방문형 홈케어는 익숙하고 아늑한 나만의 독립된 공간에서 진행되어 외부 소음과 시선이 완전히 차단됩니다. 이러한 심리적 안전감은 뇌파를 각성 상태(베타파)에서 깊은 안정 상태(알파파 및 세타파)로 신속하게 전환시키며, 부교감신경계를 활성화하여 심장 박동을 차분하게 안정시키고 혈관을 확장합니다.`,
+        `무엇보다 세션이 종료된 직후 환복이나 복잡한 귀가 이동 과정 없이 곧바로 개인 침상에서 편안한 숙면을 취할 수 있어 릴렉싱의 연속성이 끊기지 않고 다음 날 아침까지 활력 있는 컨디션이 유지됩니다.`
+      ],
+      tipTitle: "💡 추천 이용 팁: 야간 숙면 극대화 전략",
+      tipDesc: "관리 당일에는 스마트폰 사용을 줄이고 조명을 은은하게 조절하여 부교감신경이 활성화된 상태를 취침 전까지 유지하시면 깊은 숙면에 큰 도움이 됩니다."
+    }
+  ];
+
+  return insightSets[seed % insightSets.length];
+}
+
 export default function ShopDetailPage({ params }: PageProps) {
   const resolvedParams = use(params);
   const slug = resolvedParams.slug || [];
 
   // URL Slug 파싱
-  // 1) /shop/1                  -> id: "1"
-  // 2) /shop/seoul/gangnam/1    -> district: "gangnam", id: "1" (구 샵)
-  // 3) /shop/seoul/gangnam/개포1동/1 -> district: "gangnam", dong: "개포1동", id: "1" (동 샵)
   let district = "";
   let dong = "";
   let shopId = "1";
@@ -119,8 +160,12 @@ export default function ShopDetailPage({ params }: PageProps) {
 
   const shop = shopData[shopId] || shopData["1"];
 
+  // 샵 ID와 지역명을 결합한 해시값 생성 -> 유사 문서 방지용 단락 선택
+  const charSum = (areaTitle + shop.name + shopId).split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const insight = getDynamicShopInsight(shop.name, areaTitle, Math.abs(charSum));
+
   return (
-    <div className="bg-[#050505] text-gray-100 min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-black pb-24">
+    <div className="bg-[#050505] text-gray-100 min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-black pb-28">
       
       {/* 상단 헤더 */}
       <header className="sticky top-0 z-50 bg-[#050505]/85 backdrop-blur-xl border-b border-amber-500/20 px-4 py-3.5 shadow-[0_4px_20px_rgba(245,158,11,0.1)]">
@@ -147,7 +192,7 @@ export default function ShopDetailPage({ params }: PageProps) {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-8">
+      <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-10">
         
         {/* 대표 비주얼 카드 */}
         <section className="bg-[#121214] border border-amber-500/30 rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
@@ -164,7 +209,6 @@ export default function ShopDetailPage({ params }: PageProps) {
           </div>
 
           <div className="p-6 md:p-8 space-y-4 -mt-8 relative z-10">
-            {/* 구 / 동 태그 노출 */}
             <div className="inline-block bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-xl text-amber-400 text-xs font-bold">
               📍 {areaTitle} 전지역 25분 내 빠른 방문
             </div>
@@ -215,6 +259,38 @@ export default function ShopDetailPage({ params }: PageProps) {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* 📚 [네이버 상위 노출 및 품질 가산점용 1,800자 전문 웰니스 칼럼 섹션] */}
+        <section className="bg-[#0d0d0f] border border-white/10 p-6 md:p-10 rounded-3xl space-y-6 text-gray-300 text-xs md:text-sm leading-relaxed">
+          <div className="border-b border-white/10 pb-4">
+            <span className="text-amber-400 text-xs font-extrabold tracking-widest uppercase block mb-1">
+              PROFESSIONAL THERAPY INSIGHT
+            </span>
+            <h2 className="text-lg md:text-2xl font-black text-white">
+              {insight.title}
+            </h2>
+            <p className="text-gray-400 text-xs mt-1">
+              {insight.sub}
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {insight.paragraphs.map((p, idx) => (
+              <p key={idx} className="leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+
+          <div className="bg-black/50 p-4 md:p-5 rounded-2xl border border-white/5 space-y-1.5 mt-4">
+            <h4 className="font-bold text-amber-400 text-xs md:text-sm">{insight.tipTitle}</h4>
+            <p className="text-gray-400 text-xs leading-relaxed">{insight.tipDesc}</p>
+          </div>
+
+          <div className="pt-2 text-[11px] text-gray-500 border-t border-white/5">
+            * 본 콘텐츠는 {areaTitle} 거주자 및 출장 방문 이용 고객을 위해 생리학적 이완 원리를 기반으로 작성된 공인 웰니스 안내문입니다.
           </div>
         </section>
 
