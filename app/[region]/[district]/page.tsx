@@ -39,7 +39,6 @@ function getDynamicWellnessInsight(locationName: string, seed: number) {
         `또한 최근 관절 질환, 골절 병력, 임신 등의 상태가 있는 경우 세션 시작 전 담당 힐러에게 공유하여 맞춤 강도를 설정하는 것이 안전하고 건강한 힐링을 완성하는 방법입니다.`
       ]
     },
-
     // [세트 B] 자율신경계 불균형 / 림프 순환과 부종 완화 / 천연 에센셜 오일의 시너지 / 디톡스
     {
       subtitle: `${locationName} 일상 스트레스 완화와 전신 림프 순환 디톡스 가이드`,
@@ -64,7 +63,6 @@ function getDynamicWellnessInsight(locationName: string, seed: number) {
         `관리 당일은 과도한 음주나 격렬한 운동을 지양하고 따뜻한 실내 환경에서 충분한 수면을 취함으로써 근육의 미세 이완 효과를 오랜 시간 안정적으로 유지하시기 바랍니다.`
       ]
     },
-
     // [세트 C] 보행 패턴과 골반 지지근 불균형 / 딥티슈 심부근막 / 시간 절약 방문 가치 / 에티켓
     {
       subtitle: `${locationName} 근골격계 정렬 회복을 위한 체계적 심부근막 릴렉싱 분석`,
@@ -86,7 +84,7 @@ function getDynamicWellnessInsight(locationName: string, seed: number) {
       sec4Title: "4. 투명한 요금 체계와 품격 있는 힐링 문화",
       sec4Text: [
         `홈테라는 공시된 정찰제 요금과 100% 현장 후불제 시스템을 기반으로 운영되어 이용자에게 어떠한 부당한 추가 요금도 청구하지 않습니다.`,
-        `철저한 소독과 위생 관리를 준수하는 검증된 전문 관리사와 함께 ${locationName} 전역 어디서나 품격 높은 프라이빗 바디케어를 안심하고 누려보시기 바랍니다.`
+        `철저한 소독과 위생 관리를 검증된 전문 관리사와 함께 ${locationName} 전역 어디서나 품격 높은 프라이빗 바디케어를 안심하고 누려보시기 바랍니다.`
       ]
     }
   ];
@@ -111,113 +109,21 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const variantIndex = charSum % 50;
 
   const titleVariants = [
-    /* 0 */ `${leadLocation} 출장 릴렉싱 마사지 추천 및 24시 방문${tailDistrict} 업체 | 홈테라`,
-    /* 1 */ `${leadLocation} 출장 프리미엄 마사지 100% 안심 후불제${tailDistrict} 업체 | 홈테라`,
-    /* 2 */ `${leadLocation} 출장 홈 마사지 24시 전문 프라이빗 케어${tailDistrict} 업체 | 홈테라`,
-    /* 3 */ `${leadLocation} 출장 힐링 마사지 제휴 코스 및 후불 예약${tailDistrict} 업체 | 홈테라`,
-    /* 4 */ `${leadLocation} 출장 스웨디시 마사지 24시 빠른 방문${tailDistrict} 업체 | 홈테라`,
-    /* 5 */ `${leadLocation} 출장 프라이빗 마사지 안심 후불 테라피${tailDistrict} 업체 | 홈테라`,
-    /* 6 */ `${leadLocation} 출장 맞춤 마사지 신속 도착 정직한 케어${tailDistrict} 업체 | 홈테라`,
-    /* 7 */ `${leadLocation} 출장 딥티슈 마사지 24시 예약 제휴 코스${tailDistrict} 업체 | 홈테라`,
-    /* 8 */ `${leadLocation} 출장 아로마 마사지 1:1 맞춤 피로회복${tailDistrict} 업체 | 홈테라`,
-    /* 9 */ `${leadLocation} 출장 힐링 마사지 추천 제휴 매장 모음${tailDistrict} 업체 | 홈테라`,
-    /* 10 */ `${leadLocation} 출장 릴렉싱 마사지 코스 확인 후불 케어${tailDistrict} 업체 | 홈테라`,
-    /* 11 */ `${leadLocation} 출장 프리미엄 마사지 25분 내 빠른 방문${tailDistrict} 업체 | 홈테라`,
-    /* 12 */ `${leadLocation} 출장 홈 마사지 가이드 타이 & 아로마${tailDistrict} 업체 | 홈테라`,
-    /* 13 */ `${leadLocation} 출장 프라이빗 마사지 24시 엄선 요금표${tailDistrict} 업체 | 홈테라`,
-    /* 14 */ `${leadLocation} 출장 케어 마사지 잘하는 곳 안심 후불제${tailDistrict} 업체 | 홈테라`,
-    /* 15 */ `${leadLocation} 출장 릴렉스 마사지 신속 전화 예약${tailDistrict} 업체 | 홈테라`,
-    /* 16 */ `${leadLocation} 출장 베테랑 마사지 24시 1:1 방문 테라피${tailDistrict} 업체 | 홈테라`,
-    /* 17 */ `${leadLocation} 출장 스웨디시 마사지 가이드 홈케어 안내${tailDistrict} 업체 | 홈테라`,
-    /* 18 */ `${leadLocation} 출장 힐링 마사지 24시간 언제나 빠른 출동${tailDistrict} 업체 | 홈테라`,
-    /* 19 */ `${leadLocation} 출장 맞춤형 마사지 선입금 없는 정직한${tailDistrict} 업체 | 홈테라`,
-    /* 20 */ `${leadLocation} 출장 릴렉싱 마사지 전문 제휴 가이드${tailDistrict} 업체 | 홈테라`,
-    /* 21 */ `${leadLocation} 출장 프리미엄 마사지 만족도 높은 24시${tailDistrict} 업체 | 홈테라`,
-    /* 22 */ `${leadLocation} 출장 홈 마사지 제휴 코스 및 가격 안내${tailDistrict} 업체 | 홈테라`,
-    /* 23 */ `${leadLocation} 출장 프라이빗 마사지 25분 빠른 도착${tailDistrict} 업체 | 홈테라`,
-    /* 24 */ `${leadLocation} 출장 바디 마사지 프라이빗 케어 후불제${tailDistrict} 업체 | 홈테라`,
-    /* 25 */ `${leadLocation} 출장 전신 마사지 추천 24시 안심 방문${tailDistrict} 업체 | 홈테라`,
-    /* 26 */ `${leadLocation} 출장 아로마 마사지 타이 & 스웨디시${tailDistrict} 업체 | 홈테라`,
-    /* 27 */ `${leadLocation} 출장 릴렉싱 마사지 예약 안내 100% 후불${tailDistrict} 업체 | 홈테라`,
-    /* 28 */ `${leadLocation} 출장 프리미엄 마사지 친절 방문 피로회복${tailDistrict} 업체 | 홈테라`,
-    /* 29 */ `${leadLocation} 출장 홈 마사지 신속 방문 24시 테라피${tailDistrict} 업체 | 홈테라`,
-    /* 30 */ `${leadLocation} 출장 프라이빗 마사지 프리미엄 제휴 코스${tailDistrict} 업체 | 홈테라`,
-    /* 31 */ `${leadLocation} 출장 힐링 마사지 내 주변 신속 방문${tailDistrict} 업체 | 홈테라`,
-    /* 32 */ `${leadLocation} 출장 맞춤 마사지 24시간 후불 예약 방법${tailDistrict} 업체 | 홈테라`,
-    /* 33 */ `${leadLocation} 출장 오일 마사지 정직하고 안전한 1:1${tailDistrict} 업체 | 홈테라`,
-    /* 34 */ `${leadLocation} 출장 릴렉스 마사지 추천 매장 종합 가격${tailDistrict} 업체 | 홈테라`,
-    /* 35 */ `${leadLocation} 출장 프리미엄 마사지 힐링 코스 가격표${tailDistrict} 업체 | 홈테라`,
-    /* 36 */ `${leadLocation} 출장 홈 마사지 선입금 없는 24시 케어${tailDistrict} 업체 | 홈테라`,
-    /* 37 */ `${leadLocation} 출장 프라이빗 마사지 베테랑 힐러 배정${tailDistrict} 업체 | 홈테라`,
-    /* 38 */ `${leadLocation} 출장 케어 마사지 나만을 위한 프라이빗${tailDistrict} 업체 | 홈테라`,
-    /* 39 */ `${leadLocation} 출장 바디 마사지 안심 후불제 24시${tailDistrict} 업체 | 홈테라`,
-    /* 40 */ `${leadLocation} 출장 건식 마사지 오일 & 아로마 제휴${tailDistrict} 업체 | 홈테라`,
-    /* 41 */ `${leadLocation} 출장 힐링 마사지 건전 방문 바디 서비스${tailDistrict} 업체 | 홈테라`,
-    /* 42 */ `${leadLocation} 출장 릴렉싱 마사지 피로 풀리는 1:1${tailDistrict} 업체 | 홈테라`,
-    /* 43 */ `${leadLocation} 출장 프리미엄 마사지 25분 내 빠른 쉼터${tailDistrict} 업체 | 홈테라`,
-    /* 44 */ `${leadLocation} 출장 홈 마사지 엄선된 24시 제휴 매장${tailDistrict} 업체 | 홈테라`,
-    /* 45 */ `${leadLocation} 출장 스웨디시 마사지 후불제 24시 전문${tailDistrict} 업체 | 홈테라`,
-    /* 46 */ `${leadLocation} 출장 프라이빗 마사지 내 방에서 받는 힐링${tailDistrict} 업체 | 홈테라`,
-    /* 47 */ `${leadLocation} 출장 전신 마사지 안심 후불 24시 정보${tailDistrict} 업체 | 홈테라`,
-    /* 48 */ `${leadLocation} 출장 아로마 마사지 최고급 천연 오일${tailDistrict} 업체 | 홈테라`,
-    /* 49 */ `${leadLocation} 출장 릴렉싱 마사지 신속 예약 코스 안내${tailDistrict} 업체 | 홈테라`
+    `${leadLocation} 출장 릴렉싱 마사지 추천 및 24시 방문${tailDistrict} 업체 | 홈테라`,
+    `${leadLocation} 출장 프리미엄 마사지 100% 안심 후불제${tailDistrict} 업체 | 홈테라`,
+    `${leadLocation} 출장 홈 마사지 24시 전문 프라이빗 케어${tailDistrict} 업체 | 홈테라`,
+    `${leadLocation} 출장 힐링 마사지 제휴 코스 및 후불 예약${tailDistrict} 업체 | 홈테라`,
+    `${leadLocation} 출장 스웨디시 마사지 24시 빠른 방문${tailDistrict} 업체 | 홈테라`,
   ];
 
   const descriptionVariants = [
-    /* 0 */ `${fullLocationHeader} 출장마사지 25분 내 빠른 방문! 선입금 요청 절대 없는 100% 안심 후불제. 타이, 아로마, 스웨디시 제휴업체 코스 및 요금을 한눈에 확인하세요.`,
-    /* 1 */ `${fullLocationHeader} 출장마사지 안내. 프라이빗한 피로 회복을 위한 24시 방문 홈케어 가이드로 베테랑 테라피스트의 맞춤 힐링 케어를 제공합니다.`,
-    /* 2 */ `${fullLocationHeader} 출장마사지 예약 가이드. 전지역 신속 방문과 부담 없는 후불제 시스템, 정직한 60·90·120분 코스 정보를 홈테라에서 살펴보세요.`,
-    /* 3 */ `${fullLocationHeader} 출장마사지 & 바디케어. 스웨디시 및 아로마 릴렉싱 코스 구성과 투명한 가격, 빠른 전화 예약 상담을 확인하세요.`,
-    /* 4 */ `${fullLocationHeader} 출장마사지 찾고 계신가요? 100% 후불제로 안심하고 내 공간에서 편안하게 즐기는 프라이빗 홈케어 전문 안내입니다.`,
-    /* 5 */ `${fullLocationHeader} 출장마사지 24시 안내. 지친 일상의 피로를 날려줄 빠른 신속 방문과 베테랑 힐러진의 품격 있는 힐링 테라피를 만나보세요.`,
-    /* 6 */ `${fullLocationHeader} 출장마사지 25분 도착 보장! 선입금 없는 정직한 후불제와 깔끔한 타이·아로마·스웨디시 바디케어 코스를 엄선하여 안내합니다.`,
-    /* 7 */ `${fullLocationHeader} 출장마사지 제휴업체 모음. 24시간 언제든 편안한 개인 공간에서 이용하는 프리미엄 스웨디시 및 피로회복 케어.`,
-    /* 8 */ `${fullLocationHeader} 출장마사지 믿을 수 있는 후불제 정보. 타이 60분 6만원, 아로마 90분 9만원 등 합리적인 코스 금액을 홈테라에서 비교해 보세요.`,
-    /* 9 */ `${fullLocationHeader} 출장마사지 안심 서비스! 선입금 요구 없이 관리사 도착 후 결제하는 안전한 100% 후불제 시스템을 약속합니다.`,
-    /* 10 */ `${fullLocationHeader} 출장마사지 및 방문 홈케어 종합 안내. 맞춤형 힐링 프로그램으로 뭉친 어깨와 다리 피로를 시원하게 풀어드립니다.`,
-    /* 11 */ `${fullLocationHeader} 출장마사지 코스 및 이용 가격표 안내. 24시간 친절 상담과 신속한 방문으로 고객 만족도를 높여드립니다.`,
-    /* 12 */ `${fullLocationHeader} 출장마사지 릴렉싱 케어. 프라이빗한 1:1 맞춤 관리로 지친 몸에 깊은 휴식과 활력을 되찾아 드립니다.`,
-    /* 13 */ `${fullLocationHeader} 출장마사지 예약 가이드. 선입금 걱정 없는 안전한 100% 후불제 제휴업체 정보만 선별하여 안내해 드립니다.`,
-    /* 14 */ `${fullLocationHeader} 출장마사지 신속 방문 케어. 타이, 아로마, 스웨디시 등 내 컨디션에 꼭 맞는 맞춤형 힐링 테라피 추천.`,
-    /* 15 */ `${fullLocationHeader} 출장마사지 안심 이용 가이드. 예약금 요구 없는 정직한 후불 시스템으로 편안하게 자택 및 호텔에서 이용하세요.`,
-    /* 16 */ `${fullLocationHeader} 출장마사지 전문 힐러 케어. 빠른 방문 도착 시간과 투명한 코스별 요금표 정보를 홈테라에서 확인하세요.`,
-    /* 17 */ `${fullLocationHeader} 출장마사지 24시 방문 서비스. 쌓인 스트레스와 긴장된 근육을 부드럽게 이완시켜 드리는 힐링 타임.`,
-    /* 18 */ `${fullLocationHeader} 출장마사지 엄선 제휴업체 정보. 선입금 0원, 검증된 1:1 방문 맞춤 케어 프로그램과 정직한 요금 안내.`,
-    /* 19 */ `${fullLocationHeader} 출장마사지 25분 내 출동 서비스. 친절한 일정 조율과 신속한 도착으로 언제나 편안하게 이용하실 수 있습니다.`,
-    /* 20 */ `${fullLocationHeader} 출장마사지 만족도 우수 후불 가이드. 전신 아로마 및 스웨디시 힐링 코스로 하루의 피로를 녹여보세요.`,
-    /* 21 */ `${fullLocationHeader} 출장마사지 365일 연중무휴 24시 운영! 100% 후불 안심 예약 시스템으로 부담 없이 이용하세요.`,
-    /* 22 */ `${fullLocationHeader} 출장마사지 홈테라 공식 정보 안내. 빠른 방문과 차별화된 프리미엄 홈케어 테라피를 만나보세요.`,
-    /* 23 */ `${fullLocationHeader} 출장마사지 전문 가이드. 1:1 맞춤 피로회복 케어로 내 공간에서 쾌적하고 편안한 힐링 시간을 선물합니다.`,
-    /* 24 */ `${fullLocationHeader} 출장마사지 신속 예약 지원. 선입금 없는 안심 후불제로 즐기는 럭셔리 스웨디시 & 아로마 프로그램.`,
-    /* 25 */ `${fullLocationHeader} 출장마사지 24시 정보. 지친 몸에 활력을 더해줄 검증된 테라피스트의 다채로운 힐링 코스를 추천합니다.`,
-    /* 26 */ `${fullLocationHeader} 출장마사지 가격 및 코스 상세 안내. 24시간 원하는 시간에 맞춰 방문하는 프라이빗 1:1 케어.`,
-    /* 27 */ `${fullLocationHeader} 출장마사지 안심 후불제 추천! 출발 전 선입금을 요구하지 않는 정직한 업체 정보만 모아 안내합니다.`,
-    /* 28 */ `${fullLocationHeader} 출장마사지 25분 신속 방문 케어. 뭉친 승모근과 하체 피로를 시원하고 상쾌하게 풀어드립니다.`,
-    /* 29 */ `${fullLocationHeader} 출장마사지 최상의 제휴 안내. 정직한 서비스 마인드와 명확한 표준 요금 체계를 확인해 보세요.`,
-    /* 30 */ `${fullLocationHeader} 출장마사지 타이, 아로마, 스웨디시 맞춤 케어! 이동할 필요 없이 편안한 장소에서 누리는 프라이빗 힐링.`,
-    /* 31 */ `${fullLocationHeader} 출장마사지 100% 후불제 시스템. 빠른 방문과 친절한 서비스로 고객님을 정성껏 모십니다.`,
-    /* 32 */ `${fullLocationHeader} 출장마사지 힐링 테라피 모음. 24시간 언제나 빠르게 이용할 수 있는 수도권 안심 방문 가이드.`,
-    /* 33 */ `${fullLocationHeader} 출장마사지 전문 제휴업체 정보. 신속한 방문 서비스와 꼼꼼한 전신 이완 프로그램 요금을 안내합니다.`,
-    /* 34 */ `${fullLocationHeader} 출장마사지 안심 이용 방법. 예약부터 관리사 도착까지 100% 후불제로 안전하게 진행됩니다.`,
-    /* 35 */ `${fullLocationHeader} 출장마사지 베테랑 테라피스트 신속 배정. 아로마 및 스웨디시 코스로 일상의 활력을 되찾아 드립니다.`,
-    /* 36 */ `${fullLocationHeader} 출장마사지 빠른 방문 보장. 사기 걱정 없는 100% 안심 후불제 시스템으로 언제든 편하게 이용하세요.`,
-    /* 37 */ `${fullLocationHeader} 출장마사지 1:1 프라이빗 테라피 안내. 지친 일상 속 깊은 휴식과 릴렉싱을 제공하는 제휴 정보.`,
-    /* 38 */ `${fullLocationHeader} 출장마사지 25분 빠른 출동 케어! 전신 근육 긴장 완화 및 심신 안정을 돕는 프리미엄 홈케어.`,
-    /* 39 */ `${fullLocationHeader} 출장마사지 홈테라 엄선 제휴업체 모음. 깔끔하고 정직한 서비스 정보와 코스별 가격을 확인하세요.`,
-    /* 40 */ `${fullLocationHeader} 출장마사지 타이 & 스웨디시 정보. 선입금 요구가 전혀 없는 안전한 후불제 매장만 투명하게 제공합니다.`,
-    /* 41 */ `${fullLocationHeader} 출장마사지 24시간 예약 지원. 나만의 프라이빗한 장소에서 부담 없이 피로를 풀어보세요.`,
-    /* 42 */ `${fullLocationHeader} 출장마사지 릴렉스 전문 가이드. 명확한 요금 체계와 베테랑 힐러의 깊이 있는 방문 케어 서비스.`,
-    /* 43 */ `${fullLocationHeader} 출장마사지 전지역 24시 신속 방문. 최고급 아로마 오일 테라피로 지친 몸과 마음을 정성껏 다스려 드립니다.`,
-    /* 44 */ `${fullLocationHeader} 출장마사지 제휴업체 실시간 가이드. 100% 후불 안전 거래와 깔끔한 서비스 구성.`,
-    /* 45 */ `${fullLocationHeader} 출장마사지 빠른 예약 안내. 24시간 편한 시간에 맞춰 방문하는 1:1 맞춤 피로해소 프로그램.`,
-    /* 46 */ `${fullLocationHeader} 출장마사지 추천 가이드! 선입금 없는 후불제로 마음 편히 이용할 수 있는 홈케어 바디케어.`,
-    /* 47 */ `${fullLocationHeader} 출장마사지 신속 방문 시스템. 전문 테라피스트가 직접 방문하여 고품격 테라피를 선사합니다.`,
-    /* 48 */ `${fullLocationHeader} 출장마사지 24시 방문 케어 완벽 정리. 코스별 시간·요금 및 간편 전화 연결 서비스를 제공합니다.`,
-    /* 49 */ `${fullLocationHeader} 출장마사지 안심 이용 가이드. 100% 후불제 시스템과 정직한 제휴업체 정보로 만족도를 높여드립니다.`
+    `${fullLocationHeader} 출장마사지 25분 내 빠른 방문! 선입금 요청 절대 없는 100% 안심 후불제. 타이, 아로마, 스웨디시 제휴업체 코스 및 요금을 한눈에 확인하세요.`,
+    `${fullLocationHeader} 출장마사지 안내. 프라이빗한 피로 회복을 위한 24시 방문 홈케어 가이드로 베테랑 테라피스트의 맞춤 힐링 케어를 제공합니다.`,
+    `${fullLocationHeader} 출장마사지 예약 가이드. 전지역 신속 방문과 부담 없는 후불제 시스템, 정직한 60·90·120분 코스 정보를 홈테라에서 살펴보세요.`,
   ];
 
-  const finalTitle = titleVariants[variantIndex];
-  const finalDescription = descriptionVariants[variantIndex];
+  const finalTitle = titleVariants[variantIndex % titleVariants.length];
+  const finalDescription = descriptionVariants[variantIndex % descriptionVariants.length];
 
   return {
     title: finalTitle,
@@ -302,35 +208,8 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
     }
   ];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": `${fullTitle} 출장 릴렉싱 마사지 & 홈케어 안내 - 홈테라`,
-    "description": `${fullTitle} 지역 출장마사지, 방문 바디케어 및 힐링 테라피 제휴업체 정보 제공`,
-    "url": `https://homethera-metro.netlify.app/${region}/${encodeURIComponent(districtName)}`,
-    "telephone": "0507-1280-3360",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": districtName,
-      "addressRegion": regionName,
-      "addressCountry": "KR"
-    }
-  };
-
   return (
     <div className="bg-[#050505] text-gray-100 min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-black">
-      
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
-      {/* 네이버 Yeti 크롤러 수집용 SSR 시맨틱 블록 */}
-      <div className="sr-only" aria-hidden="true">
-        <h1>{fullTitle} 출장 프리미엄 마사지 &amp; 홈케어 정보</h1>
-        <p>{fullTitle} 지역 고객님을 위한 100% 안심 후불제 바디케어 가이드와 코스별 가격 안내.</p>
-      </div>
-
       {/* 상단 헤더 */}
       <header className="sticky top-0 z-50 bg-[#050505]/85 backdrop-blur-xl border-b border-amber-500/20 px-4 py-3.5 shadow-[0_4px_20px_rgba(245,158,11,0.1)]">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
@@ -348,14 +227,13 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
             </div>
           </Link>
           
-          <Link href="/" className="text-xs font-bold text-amber-400 bg-amber-500/10 px-3.5 py-2 rounded-xl border border-amber-500/30 hover:bg-amber-500 hover:text-black transition-all shadow-inner flex items-center gap-1">
-            <span>🏠</span> 메인 홈으로
+          <Link href={`/${region}/${encodeURIComponent(districtName)}`} className="text-xs font-bold text-amber-400 bg-amber-500/10 px-3.5 py-2 rounded-xl border border-amber-500/30 hover:bg-amber-500 hover:text-black transition-all shadow-inner flex items-center gap-1">
+            <span>←</span> {districtName} 전체 보기
           </Link>
         </div>
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-8 w-full flex-1 space-y-12">
-        
         {/* 상단 지역 대표 배너 */}
         <section className="relative rounded-3xl overflow-hidden border border-amber-500/30 shadow-[0_0_40px_rgba(245,158,11,0.15)]">
           <img 
@@ -389,41 +267,47 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {localShops.map((lShop) => (
-              <div key={lShop.id} className="bg-[#121214] border border-amber-500/20 hover:border-amber-500/60 rounded-2xl p-4 flex gap-4 items-center shadow-lg transition-all group relative">
-                <Link 
-                  href={`/shop/${region}/${encodeURIComponent(districtName)}${dongName ? `/${encodeURIComponent(dongName)}` : ""}/${lShop.id}`} 
-                  className="absolute inset-0 z-10" 
-                  aria-label={`${lShop.name} 상세페이지 보기`} 
-                />
-                <img 
-                  src={lShop.image} 
-                  alt={lShop.name} 
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover border border-white/10 group-hover:scale-105 transition-transform" 
-                />
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-extrabold text-sm md:text-base text-white truncate group-hover:text-amber-400 transition-colors">
-                    {lShop.name}
-                  </h3>
-                  <p className="text-[11px] text-gray-400 mt-1 line-clamp-2">
-                    {lShop.desc}
-                  </p>
-                  <div className="mt-2.5 flex items-center justify-between">
-                    <span className="text-xs font-black text-amber-400">{lShop.price}</span>
-                    <a 
-                      href={`tel:${lShop.phone}`} 
-                      className="bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-black text-xs px-3.5 py-1.5 rounded-xl shadow transition-all transform active:scale-95 relative z-20"
-                    >
-                      전화연결
-                    </a>
+            {localShops.map((lShop) => {
+              const shopDetailLink = dongName
+                ? `/shop/${region}/${encodeURIComponent(districtName)}/${encodeURIComponent(dongName)}/${lShop.id}`
+                : `/shop/${region}/${encodeURIComponent(districtName)}/${lShop.id}`;
+
+              return (
+                <div key={lShop.id} className="bg-[#121214] border border-amber-500/20 hover:border-amber-500/60 rounded-2xl p-4 flex gap-4 items-center shadow-lg transition-all group relative">
+                  <Link 
+                    href={shopDetailLink} 
+                    className="absolute inset-0 z-10" 
+                    aria-label={`${lShop.name} 상세페이지 보기`} 
+                  />
+                  <img 
+                    src={lShop.image} 
+                    alt={lShop.name} 
+                    className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover border border-white/10 group-hover:scale-105 transition-transform" 
+                  />
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-extrabold text-sm md:text-base text-white truncate group-hover:text-amber-400 transition-colors">
+                      {lShop.name}
+                    </h3>
+                    <p className="text-[11px] text-gray-400 mt-1 line-clamp-2">
+                      {lShop.desc}
+                    </p>
+                    <div className="mt-2.5 flex items-center justify-between">
+                      <span className="text-xs font-black text-amber-400">{lShop.price}</span>
+                      <a 
+                        href={`tel:${lShop.phone}`} 
+                        className="bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-black font-black text-xs px-3.5 py-1.5 rounded-xl shadow transition-all transform active:scale-95 relative z-20"
+                      >
+                        전화연결
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
-        {/* 📚 [네이버 상위 노출용 2,000자 전문 웰니스 인사이트 칼럼 - 지역별 동적 교체] */}
+        {/* 📚 [네이버 상위 노출용 2,000자 전문 웰니스 인사이트 칼럼] */}
         <section className="bg-[#0c0c0e] p-6 sm:p-10 rounded-3xl border border-white/10 space-y-8 text-gray-300 leading-relaxed text-xs sm:text-sm">
           <div className="border-b border-white/10 pb-4">
             <span className="text-amber-400 font-extrabold text-xs tracking-widest block uppercase mb-1">
@@ -432,12 +316,8 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
             <h2 className="text-xl sm:text-2xl font-black text-white">
               {insight.subtitle}
             </h2>
-            <p className="text-gray-400 text-xs mt-1">
-              {fullTitle} 주민 여러분의 피로 회복 메커니즘과 건강한 1:1 홈케어 선택 가이드
-            </p>
           </div>
 
-          {/* 단락 1 */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <span className="text-amber-400">●</span> {insight.sec1Title}
@@ -447,7 +327,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
             ))}
           </div>
 
-          {/* 단락 2 */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <span className="text-amber-400">●</span> {insight.sec2Title}
@@ -457,7 +336,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
             ))}
           </div>
 
-          {/* 단락 3 */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <span className="text-amber-400">●</span> {insight.sec3Title}
@@ -467,7 +345,6 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
             ))}
           </div>
 
-          {/* 단락 4 */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <span className="text-amber-400">●</span> {insight.sec4Title}
@@ -476,82 +353,12 @@ export default async function RegionalDetailPage({ params, searchParams }: PageP
               <p key={idx}>{p}</p>
             ))}
           </div>
-
-          <div className="pt-4 border-t border-white/5 text-[11px] text-gray-500">
-            * 본 콘텐츠는 {fullTitle} 고객 여러분의 올바른 신체 휴식과 안전한 안심 후불제 홈케어 정보 제공을 위해 작성된 전문 칼럼입니다.
-          </div>
         </section>
-
-        {/* 이용 방법 4단계 */}
-        <section className="bg-[#0f0f12] p-6 md:p-8 rounded-3xl border border-amber-500/30 space-y-6">
-          <div className="text-center">
-            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">SERVICE PROCESS</span>
-            <h2 className="text-xl font-black text-white mt-1">{fullTitle} 서비스 이용 순서</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
-              <span className="text-xs text-amber-400 font-bold">STEP 1</span>
-              <h3 className="font-bold text-white mt-1">위치 전달</h3>
-              <p className="text-xs text-gray-400 mt-1">{fullTitle} 희망 장소를 알려줍니다.</p>
-            </div>
-            <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
-              <span className="text-xs text-amber-400 font-bold">STEP 2</span>
-              <h3 className="font-bold text-white mt-1">시간 조율</h3>
-              <p className="text-xs text-gray-400 mt-1">원하시는 방문 시간을 확인합니다.</p>
-            </div>
-            <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
-              <span className="text-xs text-amber-400 font-bold">STEP 3</span>
-              <h3 className="font-bold text-white mt-1">코스 선택</h3>
-              <p className="text-xs text-gray-400 mt-1">컨디션에 맞는 프로그램을 선택합니다.</p>
-            </div>
-            <div className="bg-black/60 p-4 rounded-2xl border border-white/5 text-center">
-              <span className="text-xs text-amber-400 font-bold">STEP 4</span>
-              <h3 className="font-bold text-white mt-1">케어 진행</h3>
-              <p className="text-xs text-gray-400 mt-1">도착 후 100% 후불제로 이용합니다.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* 자주 묻는 질문 (Q&A) */}
-        <section className="space-y-4">
-          <div className="text-center">
-            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">FAQ &amp; GUIDE</span>
-            <h2 className="text-xl font-black text-white mt-1">{fullTitle} 자주 묻는 질문</h2>
-          </div>
-          <div className="space-y-3">
-            <div className="bg-black/60 p-4 rounded-2xl border border-white/5 space-y-1.5">
-              <div className="font-bold text-sm text-gray-200 flex items-center gap-2">
-                <span className="text-amber-400">Q.</span> {fullTitle} 출장마사지 방문 소요 시간은 얼마나 되나요?
-              </div>
-              <p className="text-xs text-gray-400 pl-6 leading-relaxed">
-                <span className="text-red-400 font-bold">A.</span> 주요 거점 기준 평균 20분~30분 내외로 신속한 방문이 가능합니다.
-              </p>
-            </div>
-            <div className="bg-black/60 p-4 rounded-2xl border border-white/5 space-y-1.5">
-              <div className="font-bold text-sm text-gray-200 flex items-center gap-2">
-                <span className="text-amber-400">Q.</span> 예약금이나 선입금 요청이 있나요?
-              </div>
-              <p className="text-xs text-gray-400 pl-6 leading-relaxed">
-                <span className="text-red-400 font-bold">A.</span> 홈테라 제휴업체는 100% 후불제로 운영되므로 출발 전 선입금을 절대 요구하지 않습니다.
-              </p>
-            </div>
-          </div>
-        </section>
-
       </main>
 
       {/* 푸터 영역 */}
       <footer className="bg-[#030303] border-t border-white/10 py-10 text-center text-gray-500 text-xs mt-auto">
         <div className="max-w-4xl mx-auto px-4 space-y-4">
-          <div>
-            <a 
-              href="tel:0507-1280-3360" 
-              className="inline-flex items-center gap-1.5 bg-neutral-900 hover:bg-neutral-800 text-amber-400 font-bold px-4 py-2 rounded-xl border border-amber-500/30 hover:border-amber-400 transition-all text-xs shadow-md"
-            >
-              <span>🤝</span> {fullTitle} 제휴 및 예약 문의 (0507-1280-3360)
-            </a>
-          </div>
-
           <p className="text-gray-400 font-bold">홈테라는 건전하고 안전한 방문 힐링 바디케어 정보 안내 플랫폼입니다.</p>
           <p className="text-[11px] text-gray-600">COPYRIGHT &copy; 2026 홈테라 ALL RIGHTS RESERVED.</p>
         </div>
