@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-// 지역명과 자연스럽게 결합될 홈테라 타깃 롱테일 문구 리스트 (오타 수정 및 보강)
+interface ClientTextMixerProps {
+  region?: string;
+  district?: string;
+  dongName?: string;
+  locationText?: string;
+}
+
+// 지역명과 자연스럽게 결합될 홈테라 타깃 롱테일 문구 리스트
 const MIXED_TEMPLATES = [
   "{loc} 프라이빗 출장 & 홈케어 마사지 안내 | 홈테라",
   "{loc} 타이 · 아로마 · 스웨디시 25분 빠른 출장 힐링",
@@ -14,8 +21,16 @@ const MIXED_TEMPLATES = [
   "{loc} 검증된 베테랑 힐러의 정성 어린 1:1 방문 힐링",
 ];
 
-export default function ClientTextMixer({ locationText }: { locationText: string }) {
-  const cleanLocation = locationText ? locationText.trim() : "수도권 전지역";
+export default function ClientTextMixer({
+  region,
+  district,
+  dongName,
+  locationText,
+}: ClientTextMixerProps) {
+  // 우선순위: locationText가 있으면 사용, 없으면 district와 dongName 조합
+  const computedLocation =
+    locationText || (dongName ? `${district} ${dongName}` : district) || "수도권 전지역";
+  const cleanLocation = computedLocation.trim();
 
   // 지역명 글자 합 기반 결정론적 초기 텍스트 설정 (깜빡임 최소화)
   const getInitialText = (loc: string) => {
