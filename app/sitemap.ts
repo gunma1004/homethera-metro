@@ -1,6 +1,11 @@
 import { MetadataRoute } from 'next';
 
-// 🌟 수도권 구별 세부 동 데이터 맵 (사이트맵 자동 확장용)
+const BASE_URL = 'https://homethera-metro.netlify.app';
+
+// 🌟 네이버 수집 봇 신뢰도 확보를 위한 고정 배포 일자 (매 요청 new Date() 사용 금지)
+const LAST_MODIFIED_DATE = new Date('2026-10-15T00:00:00+09:00');
+
+// 🌟 수도권 구별 세부 동 데이터 맵
 const regionData: Record<string, Record<string, string[]>> = {
   seoul: {
     "종로구": ["청운동", "효자동", "사직동", "삼청동", "부암동", "평창동", "무악동", "교남동", "가회동", "종로1.2.3.4가동", "종로5.6가동", "이화동", "혜화동", "창신1동", "창신2동", "창신3동", "숭인1동", "숭인2동"],
@@ -43,36 +48,28 @@ const regionData: Record<string, Record<string, string[]>> = {
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://homethera-metro.netlify.app';
-
-  // 1. 메인 홈
+  // 1. 메인 홈 (최우선 순위)
   const mainRoute: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: BASE_URL,
+      lastModified: LAST_MODIFIED_DATE,
       changeFrequency: 'daily',
       priority: 1.0,
     },
   ];
 
-  // 2. 카테고리 페이지
-  const categoryRoutes: MetadataRoute.Sitemap = [
-    'services',
-    'prices',
-    'travel',
-    'places',
-    'reviews',
-  ].map((route) => ({
-    url: `${baseUrl}/${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.8,
+  // 2. 서울, 경기, 인천 단독 권역 페이지 (상위 허브 색인)
+  const singleRegionRoutes: MetadataRoute.Sitemap = ['seoul', 'gyeonggi', 'incheon'].map((regionKey) => ({
+    url: `${BASE_URL}/${regionKey}`,
+    lastModified: LAST_MODIFIED_DATE,
+    changeFrequency: 'daily',
+    priority: 0.9,
   }));
 
   // 3. 제휴업체 상세 페이지
   const shopRoutes: MetadataRoute.Sitemap = [1, 2, 3, 4, 5].map((id) => ({
-    url: `${baseUrl}/shop/${id}`,
-    lastModified: new Date(),
+    url: `${BASE_URL}/shop/${id}`,
+    lastModified: LAST_MODIFIED_DATE,
     changeFrequency: 'weekly',
     priority: 0.8,
   }));
@@ -84,23 +81,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     Object.entries(districts).forEach(([districtName, dongs]) => {
       // 구(District) 페이지 추가
       regionRoutes.push({
-        url: `${baseUrl}/${regionKey}/${encodeURIComponent(districtName)}`,
-        lastModified: new Date(),
-        changeFrequency: 'daily',
-        priority: 0.9,
+        url: `${BASE_URL}/${regionKey}/${encodeURIComponent(districtName)}`,
+        lastModified: LAST_MODIFIED_DATE,
+        changeFrequency: 'weekly',
+        priority: 0.85,
       });
 
       // 세부 동(Dong) 페이지 추가
       dongs.forEach((dongName) => {
         regionRoutes.push({
-          url: `${baseUrl}/${regionKey}/${encodeURIComponent(districtName)}/${encodeURIComponent(dongName)}`,
-          lastModified: new Date(),
-          changeFrequency: 'daily',
-          priority: 0.85,
+          url: `${BASE_URL}/${regionKey}/${encodeURIComponent(districtName)}/${encodeURIComponent(dongName)}`,
+          lastModified: LAST_MODIFIED_DATE,
+          changeFrequency: 'monthly',
+          priority: 0.7,
         });
       });
     });
   });
 
-  return [...mainRoute, ...categoryRoutes, ...shopRoutes, ...regionRoutes];
+  // 🌟 불필요한 카테고리(services, prices, reviews 등)를 완전히 제거한 배열 반환
+  return [...mainRoute, ...singleRegionRoutes, ...shopRoutes, ...regionRoutes];
 }
